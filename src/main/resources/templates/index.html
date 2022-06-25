@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="refresh" content="5"> <!-- hier wird refreshed -->
+    <title>Maintenance Monitor</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style type="text/css">
+        h1 {
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+<div style="margin-top:25%; text-align: center">
+    <h1>Maintenance Monitor</h1>
+    <p id="message" style="font-size: 30px"></p>
+    <p style="font-size: 20px"><i>last update:
+        <time id='date-time'></time>
+    </i></p>
+</div>
+</body>
+
+<script type="text/javascript">
+    fetch("http://localhost:8080/deliver")
+        .then(response => response.text())
+        .then(data => {
+            let message = document.getElementById("message");
+            message.innerHTML = data;
+        })
+    fetch("http://localhost:8080/color")
+        .then(response => response.text())
+        .then(data => {
+            $("body").css("background-image", "linear-gradient(to right, white," + data.toString() + ",white)"); <!-- hier wird farbe aus monitor genommen -->
+        })
+    let dt = new Date();
+    let hrs = dt.getHours();
+    let dateTime;
+    if (hrs < 10)
+        dateTime = '0' + hrs;
+    else
+        dateTime = hrs;
+    let min = dt.getMinutes();
+    if (min < 10)
+        dateTime = dateTime + ':0' + min;
+    else
+        dateTime = dateTime + ':' + min;
+    let sec = dt.getSeconds();
+    if (sec < 10)
+        dateTime = dateTime + ':0' + sec;
+    else
+        dateTime = dateTime + ':' + sec;
+    document.getElementById('date-time').innerHTML = dateTime; // https://www.howtocodeschool.com/2020/05/display-current-date-and-time-using-html-javascript.html
+</script>
+</html>

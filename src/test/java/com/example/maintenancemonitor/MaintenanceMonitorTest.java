@@ -10,7 +10,7 @@ class MaintenanceMonitorTest {
     @Test
     void setTest1(){
         String res = mon.set("");
-        String expRes = "";
+        String expRes = null;
 
         assertEquals(expRes, res);
     }
@@ -44,7 +44,6 @@ class MaintenanceMonitorTest {
 
         assertEquals(expRes, res);
     }
-
     @Test
     void deliverTest2(){
         mon.set("We have a server problem until 2pm UTC+1");
@@ -54,4 +53,20 @@ class MaintenanceMonitorTest {
         assertEquals(expRes,res);
     }
 
+    @Test
+    void colorTest1(){
+        mon.set("ERROR_NO_ELECTRICITY_FOUND");
+        String res = mon.color();
+        String expRes = "indianred";
+
+        assertEquals(expRes, res);
+    }
+    @Test
+    void colorTest2(){
+        mon.reset("yes");
+        String res = mon.color();
+        String expRes = "limegreen";
+
+        assertEquals(expRes,res);
+    }
 }
