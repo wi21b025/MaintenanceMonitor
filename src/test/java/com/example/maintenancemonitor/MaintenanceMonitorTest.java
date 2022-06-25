@@ -9,8 +9,7 @@ class MaintenanceMonitorTest {
 
     @Test
     void setTest1(){
-        mon.set("");
-        String res = mon.message;
+        String res = mon.set("");
         String expRes = "";
 
         assertEquals(expRes, res);
@@ -18,8 +17,7 @@ class MaintenanceMonitorTest {
     @Test
     void setTest2(){
 
-        mon.set("We have a server problem until 2pm UTC+1");
-        String res = mon.message;
+        String res = mon.set("We have a server problem until 2pm UTC+1");
         String expRes = "We have a server problem until 2pm UTC+1";
 
         assertEquals(expRes, res);

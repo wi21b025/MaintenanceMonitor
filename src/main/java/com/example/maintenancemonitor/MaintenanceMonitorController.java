@@ -8,7 +8,8 @@ public class MaintenanceMonitorController {
     MaintenanceMonitor mon = new MaintenanceMonitor();
 
     @RequestMapping("/set")
-    public void set(String message) {
-        mon.set(message);
+    public String set(String message) {
+        return "This is your set message: "
+                + mon.set(message);
     }
 }

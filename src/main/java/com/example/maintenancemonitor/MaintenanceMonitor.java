@@ -5,7 +5,8 @@ public class MaintenanceMonitor {
     String message = null;
 
 
-    public void set(String set) {
+    public String set(String set) {
         message = set;
+        return message;
     }
 }
