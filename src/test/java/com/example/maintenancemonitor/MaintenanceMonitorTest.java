@@ -16,9 +16,23 @@ class MaintenanceMonitorTest {
     }
     @Test
     void setTest2(){
-
         String res = mon.set("We have a server problem until 2pm UTC+1");
         String expRes = "We have a server problem until 2pm UTC+1";
+
+        assertEquals(expRes, res);
+    }
+
+    @Test
+    void resetTest1(){
+        String res = mon.reset("yes");
+        String expRes = "reset successful";
+
+        assertEquals(expRes, res);
+    }
+    @Test
+    void resetTest2(){
+        String res = mon.reset("maybe");
+        String expRes = "reset unsuccessful";
 
         assertEquals(expRes, res);
     }

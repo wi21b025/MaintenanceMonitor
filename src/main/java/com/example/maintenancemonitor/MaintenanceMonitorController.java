@@ -12,4 +12,9 @@ public class MaintenanceMonitorController {
         return "This is your set message: "
                 + mon.set(message);
     }
+
+    @RequestMapping("/reset")
+    public String reset(String reset) {
+        return mon.reset(reset);
+    }
 }
