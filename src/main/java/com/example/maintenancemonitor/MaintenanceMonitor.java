@@ -17,4 +17,8 @@ public class MaintenanceMonitor {
         }
         return "reset unsuccessful";
     }
+
+    public String deliver(){
+         return this.message;
+    }
 }

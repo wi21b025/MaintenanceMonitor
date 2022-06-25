@@ -36,4 +36,22 @@ class MaintenanceMonitorTest {
 
         assertEquals(expRes, res);
     }
+
+    @Test
+    void deliverTest1(){
+        String res = mon.deliver();
+        String expRes = null;
+
+        assertEquals(expRes, res);
+    }
+
+    @Test
+    void deliverTest2(){
+        mon.set("We have a server problem until 2pm UTC+1");
+        String res = mon.deliver();
+        String expRes = "We have a server problem until 2pm UTC+1";
+
+        assertEquals(expRes,res);
+    }
+
 }
