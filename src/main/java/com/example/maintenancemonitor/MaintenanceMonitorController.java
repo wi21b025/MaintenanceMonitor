@@ -1,8 +1,10 @@
 package com.example.maintenancemonitor;
 
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
+@CrossOrigin
 public class MaintenanceMonitorController {
 
     MaintenanceMonitor mon = new MaintenanceMonitor();
@@ -22,4 +24,16 @@ public class MaintenanceMonitorController {
     public String deliver(){
         return mon.deliver();
     }
+
+    @RequestMapping("/color")
+    public String color() {
+        return mon.color();
+    }
+
+    @RequestMapping("/")
+    public ModelAndView index() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("index.html");
+        return modelAndView;
+    } // https://stackoverflow.com/a/47170750
 }
