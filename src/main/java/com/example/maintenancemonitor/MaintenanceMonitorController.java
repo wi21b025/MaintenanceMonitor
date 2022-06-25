@@ -17,4 +17,9 @@ public class MaintenanceMonitorController {
     public String reset(String reset) {
         return mon.reset(reset);
     }
+
+    @RequestMapping("/deliver")
+    public String deliver(){
+        return mon.deliver();
+    }
 }
